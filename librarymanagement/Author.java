@@ -1,45 +1,65 @@
 package librarymanagement;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Author {
-    private String name;
-    private String dob;
-    private List<Book> booksWritten;
 
-    public Author(String name, String dob) {
-        this.name = name;
-        this.dob = dob;
-        this.booksWritten = new ArrayList<>();
+    private static int nextID = 1;
+    private int authorID;
+    private String authorName;
+    private Date dateOfBirth;
+    private List<Book> books;
+
+    public Author(String authorName, Date dateOfBirth) {
+        this.authorID = nextID++; // Assign a unique author ID
+        this.authorName = authorName;
+        this.dateOfBirth = dateOfBirth;
+        this.books = new ArrayList<>();
+    }
+
+    public int getAuthorID() {
+        return authorID;
+    }
+
+    // No need for a setter for authorID as it is set in the constructor
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public void addBook(Book book) {
-        booksWritten.add(book);
+        this.books.add(book);
     }
 
-    // Getters and setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public List<Book> getBooksWritten() {
-        return booksWritten;
-    }
-
-    public void setBooksWritten(List<Book> booksWritten) {
-        this.booksWritten = booksWritten;
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorID=" + authorID +
+                ", authorName='" + authorName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", books=" + books +
+                '}';
     }
 }
