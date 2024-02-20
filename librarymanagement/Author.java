@@ -3,6 +3,7 @@ package librarymanagement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import librarymanagement.Book;
 
 public class Author {
 
@@ -23,8 +24,6 @@ public class Author {
         return authorID;
     }
 
-    // No need for a setter for authorID as it is set in the constructor
-
     public String getAuthorName() {
         return authorName;
     }
@@ -34,19 +33,15 @@ public class Author {
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return new Date(dateOfBirth.getTime()); // Return a copy of the date to prevent external modification
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(dateOfBirth.getTime()); // Store a copy of the date to prevent external modification
     }
 
     public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
+        return new ArrayList<>(books); // Return a copy of the list to prevent external modification
     }
 
     public void addBook(Book book) {

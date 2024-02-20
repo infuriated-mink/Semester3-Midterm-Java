@@ -3,23 +3,13 @@ package librarymanagement;
 import java.util.ArrayList;
 import java.util.List;
 
-// import Status;
-
 public class Patron {
 
-    // Patron's name
     private String name;
-
-    // Patron's address
     private String address;
-
-    // Patron's phone number
     private String phoneNumber;
-
-    // List of books borrowed by the patron
     private List<Book> borrowedBooks;
 
-    // Constructor
     public Patron(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
@@ -27,11 +17,36 @@ public class Patron {
         this.borrowedBooks = new ArrayList<>();
     }
 
-    // Getters and setters
+    public String getName() {
+        return name;
+    }
 
-    // Method to borrow a book
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
     public void borrowBook(Book book) {
-        if (book.getStatus() == Status.AVAILABLE) { // Assuming Status enum is defined
+        if (book.getStatus().equals(Status.AVAILABLE)) {
             book.setStatus(Status.CHECKED_OUT);
             borrowedBooks.add(book);
         } else {
@@ -39,7 +54,6 @@ public class Patron {
         }
     }
 
-    // Method to return a book
     public void returnBook(Book book) {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
@@ -49,7 +63,6 @@ public class Patron {
         }
     }
 
-    // Method to display the patron's information
     public void displayPatronInfo() {
         System.out.println("Patron Name: " + name);
         System.out.println("Patron Address: " + address);
