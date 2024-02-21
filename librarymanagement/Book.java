@@ -1,12 +1,15 @@
 package librarymanagement;
 
-public class Book implements Borrowable {
+import java.util.Date;
+
+public class Book {
     private String title;
     private Author author;
     private String ISBN;
     private String publisher;
     private int numCopies;
     private Status status;
+    private Date dueDate;
 
     public Book(String title, Author author, String ISBN, String publisher, int numCopies) {
         this.title = title;
@@ -14,12 +17,11 @@ public class Book implements Borrowable {
         this.ISBN = ISBN;
         this.publisher = publisher;
         this.numCopies = numCopies;
-        this.status = Status.AVAILABLE; // Set initial status to AVAILABLE
+        this.status = Status.AVAILABLE;
     }
 
-    // Getters and setters
     public Status getStatus() {
-        return this.status;
+        return status;
     }
 
     public void setStatus(Status status) {
@@ -27,33 +29,71 @@ public class Book implements Borrowable {
     }
 
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
-    @Override
-    public boolean borrow(int numCopies) {
-        if (numCopies <= this.numCopies) {
-            this.numCopies -= numCopies;
-            return true;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getNumCopies() {
+        return numCopies;
+    }
+
+    public void setNumCopies(int numCopies) {
+        this.numCopies = numCopies;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public double calculateFine() {
+        double fine = 0.0;
+        // Check if the book is overdue
+        if (status == Status.CHECKED_OUT && dueDate != null && dueDate.before(new Date())) {
+            long daysOverdue = (new Date().getTime() - dueDate.getTime()) / (1000 * 60 * 60 * 24);
+            double finePerDay = 0.50;
+            fine = finePerDay * daysOverdue;
         }
-        return false;
-    }
-
-    @Override
-    public boolean returnBook(int numCopies) {
-        this.numCopies += numCopies;
-        return true;
+        return fine;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author=" + author +
-                ", ISBN='" + ISBN + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", numCopies=" + numCopies +
-                ", status=" + status +
-                '}';
+        return "Title: " + title + "\n" +
+                "Author: " + author.getAuthorName() + "\n" +
+                "ISBN: " + ISBN + "\n" +
+                "Publisher: " + publisher + "\n" +
+                "Number of Copies: " + numCopies + "\n" +
+                "Status: " + status + "\n";
     }
 }

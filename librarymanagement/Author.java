@@ -3,10 +3,8 @@ package librarymanagement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import librarymanagement.Book;
 
 public class Author {
-
     private static int nextID = 1;
     private int authorID;
     private String authorName;
@@ -14,9 +12,13 @@ public class Author {
     private List<Book> books;
 
     public Author(String authorName, Date dateOfBirth) {
-        this.authorID = nextID++; // Assign a unique author ID
+        this.authorID = nextID++;
         this.authorName = authorName;
-        this.dateOfBirth = dateOfBirth;
+        if (dateOfBirth != null) {
+            this.dateOfBirth = new Date(dateOfBirth.getTime());
+        } else {
+            this.dateOfBirth = null;
+        }
         this.books = new ArrayList<>();
     }
 
@@ -33,19 +35,34 @@ public class Author {
     }
 
     public Date getDateOfBirth() {
-        return new Date(dateOfBirth.getTime()); // Return a copy of the date to prevent external modification
+        if (dateOfBirth != null) {
+            return new Date(dateOfBirth.getTime());
+        }
+        return null;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = new Date(dateOfBirth.getTime()); // Store a copy of the date to prevent external modification
+        if (dateOfBirth != null) {
+            this.dateOfBirth = new Date(dateOfBirth.getTime());
+        } else {
+            this.dateOfBirth = null;
+        }
     }
 
     public List<Book> getBooks() {
-        return new ArrayList<>(books); // Return a copy of the list to prevent external modification
+        return new ArrayList<>(books);
     }
 
     public void addBook(Book book) {
         this.books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        this.books.remove(book);
+    }
+
+    public String getName() {
+        return authorName;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package librarymanagement;
 
 public interface Borrowable {
-    boolean borrow(int numCopies);
+    boolean borrowBook(int numCopies);
 
     boolean returnBook(int numCopies);
 }

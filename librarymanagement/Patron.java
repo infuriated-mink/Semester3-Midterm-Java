@@ -45,31 +45,51 @@ public class Patron {
         return borrowedBooks;
     }
 
+    // Method to calculate fines for the patron
+    public double calculateFines() {
+        double totalFines = 0.0;
+        for (Book book : borrowedBooks) {
+            // Calculate fine for each overdue book and add to total fines
+            double fine = book.calculateFine();
+            if (fine > 0) {
+                totalFines += fine;
+            }
+        }
+        return totalFines;
+    }
+
+    // Method to borrow a book
     public void borrowBook(Book book) {
-        if (book.getStatus().equals(Status.AVAILABLE)) {
+        if (book.getStatus() == Status.AVAILABLE) {
             book.setStatus(Status.CHECKED_OUT);
             borrowedBooks.add(book);
+            System.out.println("Book '" + book.getTitle() + "' has been borrowed successfully.");
         } else {
-            System.out.println("Sorry, the book is currently checked out.");
+            System.out.println("Sorry, the book '" + book.getTitle() + "' is currently checked out.");
         }
     }
 
+    // Method to return a book
     public void returnBook(Book book) {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
             book.setStatus(Status.AVAILABLE);
+            System.out.println("Book '" + book.getTitle() + "' has been returned successfully.");
         } else {
-            System.out.println("Sorry, you have not borrowed this book.");
+            System.out.println("Sorry, you have not borrowed the book '" + book.getTitle() + "'.");
         }
     }
 
-    public void displayPatronInfo() {
-        System.out.println("Patron Name: " + name);
-        System.out.println("Patron Address: " + address);
-        System.out.println("Patron Phone Number: " + phoneNumber);
-        System.out.println("Patron Borrowed Books:");
+    @Override
+    public String toString() {
+        StringBuilder borrowedBooksInfo = new StringBuilder();
+        borrowedBooksInfo.append("Patron Name: ").append(name).append("\n");
+        borrowedBooksInfo.append("Patron Address: ").append(address).append("\n");
+        borrowedBooksInfo.append("Patron Phone Number: ").append(phoneNumber).append("\n");
+        borrowedBooksInfo.append("Patron Borrowed Books:\n");
         for (Book book : borrowedBooks) {
-            System.out.println(" - " + book.getTitle());
+            borrowedBooksInfo.append(" - ").append(book.getTitle()).append("\n");
         }
+        return borrowedBooksInfo.toString();
     }
 }
