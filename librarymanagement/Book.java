@@ -2,7 +2,7 @@ package librarymanagement;
 
 import java.util.Date;
 
-public class Book {
+public class Book implements Borrowable {
     private String title;
     private Author author;
     private String ISBN;
@@ -85,6 +85,25 @@ public class Book {
             fine = finePerDay * daysOverdue;
         }
         return fine;
+    }
+
+    @Override
+    public void returnBook(int numCopies) {
+        if (status == Status.CHECKED_OUT) {
+            status = Status.AVAILABLE;
+            dueDate = null;
+        } else {
+            System.out.println("This book is not checked out.");
+        }
+    }
+
+    @Override
+    public void borrowBook(int numCopies) {
+        if (status == Status.AVAILABLE) {
+            status = Status.CHECKED_OUT;
+        } else {
+            System.out.println("This book is not available for borrowing.");
+        }
     }
 
     @Override

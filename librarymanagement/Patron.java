@@ -80,6 +80,16 @@ public class Patron {
         }
     }
 
+    // Method to add a borrowed book to the patron's list
+    public void addBorrowedBook(Book book) {
+        borrowedBooks.add(book);
+    }
+
+    // Method to remove a borrowed book from the patron's list
+    public void removeBorrowedBook(Book book) {
+        borrowedBooks.remove(book);
+    }
+
     @Override
     public String toString() {
         StringBuilder borrowedBooksInfo = new StringBuilder();

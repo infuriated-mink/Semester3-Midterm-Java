@@ -1,6 +1,7 @@
 package librarymanagement;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,17 +13,38 @@ public class Author {
     private Date dateOfBirth;
     private List<Book> books;
 
-    public Author(String authorName, Date string) {
+    public Author(String authorName, Date dateOfBirth) {
         this.authorID = nextID++;
         this.authorName = authorName;
-        this.dateOfBirth = string;
+        this.dateOfBirth = dateOfBirth;
         this.books = new ArrayList<>();
     }
 
-    public Author(String authorName2, String string) {
+    // Constructor for the case where dateOfBirth is a string in format "dd/MM/yyyy"
+    public Author(String authorName, String dateString) {
+        this.authorID = nextID++;
+        this.authorName = authorName;
+        this.dateOfBirth = parseDateString(dateString);
+        this.books = new ArrayList<>();
     }
 
-    public Author(String authorName2, LocalDate now) {
+    // Constructor for the case where dateOfBirth is a LocalDate
+    public Author(String authorName, LocalDate dateOfBirth) {
+        this.authorID = nextID++;
+        this.authorName = authorName;
+        this.dateOfBirth = convertToDate(dateOfBirth);
+        this.books = new ArrayList<>();
+    }
+
+    private Date parseDateString(String dateString) {
+        // Assuming the date string is in format "dd/MM/yyyy"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        return convertToDate(localDate);
+    }
+
+    private Date convertToDate(LocalDate localDate) {
+        return java.sql.Date.valueOf(localDate);
     }
 
     public int getAuthorID() {
