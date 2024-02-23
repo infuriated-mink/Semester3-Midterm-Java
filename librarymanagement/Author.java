@@ -20,11 +20,9 @@ public class Author {
     }
 
     public Author(String authorName2, String string) {
-        // TODO Auto-generated constructor stub
     }
 
     public Author(String authorName2, LocalDate now) {
-        // TODO Auto-generated constructor stub
     }
 
     public int getAuthorID() {
