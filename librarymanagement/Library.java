@@ -2,9 +2,6 @@ package librarymanagement;
 
 import java.util.ArrayList;
 import java.util.List;
-import librarymanagement.Book;
-import librarymanagement.Author;
-import librarymanagement.Patron;
 
 public class Library {
     private List<Book> books;
@@ -42,16 +39,17 @@ public class Library {
         return foundBooks;
     }
 
-    // Method to search for books by author
-    public List<Book> searchBooksByAuthor(String authorName) {
-        List<Book> foundBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getAuthor().getName().equalsIgnoreCase(authorName)) {
-                foundBooks.add(book);
-            }
+// Method to search for books by author
+public List<Book> searchBooksByAuthor(String authorName) {
+    List<Book> foundBooks = new ArrayList<>();
+    for (Book book : books) {
+        Author author = book.getAuthor();
+        if (author != null && author.getAuthorName() != null && author.getAuthorName().equalsIgnoreCase(authorName)) {
+            foundBooks.add(book);
         }
-        return foundBooks;
     }
+    return foundBooks;
+}
 
     // Method to search for books by ISBN
     public Book searchBooksByISBN(String isbn) {
@@ -68,10 +66,10 @@ public class Library {
         patrons.remove(patron);
     }
 
-        // Method to remove a book from the library
-        public void removeBook(Book book) {
-            books.remove(book);
-        }
+    // Method to remove a book from the library
+    public void removeBook(Book book) {
+        books.remove(book);
+    }
 
     // Method to borrow a book
     public void borrowBook(Book book, Patron patron) {
@@ -81,5 +79,12 @@ public class Library {
     // Method to return a book
     public void returnBook(Book book, Patron patron) {
         patron.returnBook(book);
+    }
+
+    // Method to add an author to the library
+    public void addAuthor(Author author) {
+        if (!authors.contains(author)) {
+            authors.add(author);
+        }
     }
 }

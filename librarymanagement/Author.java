@@ -1,5 +1,6 @@
 package librarymanagement;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,15 +12,19 @@ public class Author {
     private Date dateOfBirth;
     private List<Book> books;
 
-    public Author(String authorName, Date dateOfBirth) {
+    public Author(String authorName, Date string) {
         this.authorID = nextID++;
         this.authorName = authorName;
-        if (dateOfBirth != null) {
-            this.dateOfBirth = new Date(dateOfBirth.getTime());
-        } else {
-            this.dateOfBirth = null;
-        }
+        this.dateOfBirth = string;
         this.books = new ArrayList<>();
+    }
+
+    public Author(String authorName2, String string) {
+        // TODO Auto-generated constructor stub
+    }
+
+    public Author(String authorName2, LocalDate now) {
+        // TODO Auto-generated constructor stub
     }
 
     public int getAuthorID() {
@@ -35,18 +40,11 @@ public class Author {
     }
 
     public Date getDateOfBirth() {
-        if (dateOfBirth != null) {
-            return new Date(dateOfBirth.getTime());
-        }
-        return null;
+        return dateOfBirth != null ? new Date(dateOfBirth.getTime()) : null;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        if (dateOfBirth != null) {
-            this.dateOfBirth = new Date(dateOfBirth.getTime());
-        } else {
-            this.dateOfBirth = null;
-        }
+        this.dateOfBirth = dateOfBirth;
     }
 
     public List<Book> getBooks() {
@@ -59,10 +57,6 @@ public class Author {
 
     public void removeBook(Book book) {
         this.books.remove(book);
-    }
-
-    public String getName() {
-        return authorName;
     }
 
     @Override
