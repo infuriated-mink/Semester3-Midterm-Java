@@ -76,6 +76,11 @@ public class Book implements Borrowable {
         this.dueDate = dueDate;
     }
 
+    // Method to decrement the number of copies available
+    public void decrementCopies() {
+        numCopies--;
+    }
+
     public double calculateFine() {
         double fine = 0.0;
         // Check if the book is overdue

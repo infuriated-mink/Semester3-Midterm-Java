@@ -86,12 +86,17 @@ public class Main {
         Book book3 = new Book("Python Essentials", author2, "978-3-16-148412-0", "Publisher C", 7);
         Book book4 = new Book("Python Data Science Handbook", author2, "978-1491912058", "O'Reilly Media", 4);
         Book book5 = new Book("C++ Primer", author3, "978-0321714114", "Addison-Wesley Professional", 6);
+        Book book6 = new Book("C++ Primer Plus", author3, "978-0321776402", "Addison-Wesley Professional", 2);
+        Book book7 = new Book("C++ Programming", author3, "978-0672326974", "Sams Publishing", 3);
+        Book book8 = new Book("C++ for Dummies", author3, "978-0764557696", "For Dummies", 5);
+        Book book9 = new Book("C++ in One Hour a Day", author3, "978-0789757745", "Sams Publishing", 4);
 
         // Adding patrons
         Patron patron1 = new Patron("Carol", "789 Elm St", "555-6789");
         Patron patron2 = new Patron("Daniel", "101 Pine St", "555-7890");
         Patron patron3 = new Patron("Emma", "456 Oak St", "555-1234");
         Patron patron4 = new Patron("Frank", "321 Maple St", "555-5678");
+        Patron patron5 = new Patron("Grace", "654 Birch St", "555-2345");
 
         // Adding books, authors, and patrons to the library
         library.addBook(book1);
@@ -99,6 +104,10 @@ public class Main {
         library.addBook(book3);
         library.addBook(book4);
         library.addBook(book5);
+        library.addBook(book6);
+        library.addBook(book7);
+        library.addBook(book8);
+        library.addBook(book9);
 
         library.addAuthor(author1);
         library.addAuthor(author2);
@@ -108,6 +117,7 @@ public class Main {
         library.addPatron(patron2);
         library.addPatron(patron3);
         library.addPatron(patron4);
+        library.addPatron(patron5);
     }
 
     // Method to display information about a list of books

@@ -1,5 +1,7 @@
 package librarymanagement;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,8 @@ public class Library {
         if (book.getStatus() == Status.AVAILABLE) {
             book.setStatus(Status.CHECKED_OUT);
             patron.addBorrowedBook(book);
+            book.decrementCopies(); // Decrement the number of copies available
+            System.out.println("Book '" + book.getTitle() + "' has been borrowed successfully.");
         } else {
             System.out.println("This book is not available for borrowing.");
         }
@@ -58,9 +62,27 @@ public class Library {
 
     // Method to return a book
     public void returnBook(Book book, Patron patron) {
+        returnBook(book, patron, LocalDate.now());
+    }
+
+    // Method to return a book with a specified return date
+    public void returnBook(Book book, Patron patron, LocalDate returnDate) {
         if (patron.getBorrowedBooks().contains(book)) {
             book.setStatus(Status.AVAILABLE);
             patron.removeBorrowedBook(book);
+
+            // Calculate fines for overdue books
+            LocalDate dueDate = LocalDate.now().minusDays(7); // Assuming books are due in 7 days
+            long daysOverdue = ChronoUnit.DAYS.between(dueDate, returnDate);
+            double fineRatePerDay = 0.50; // Define your fine rate per day
+
+            if (daysOverdue > 0) {
+                double fines = daysOverdue * fineRatePerDay;
+                patron.addFines(fines);
+                System.out.println("Book returned overdue. Fines incurred: $" + fines);
+            } else {
+                System.out.println("Book returned on time. No fines incurred.");
+            }
         } else {
             System.out.println("This book was not borrowed by the patron.");
         }
