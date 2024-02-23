@@ -76,7 +76,6 @@ public class Book implements Borrowable {
         this.dueDate = dueDate;
     }
 
-    // Method to decrement the number of copies available
     public void decrementCopies() {
         numCopies--;
     }

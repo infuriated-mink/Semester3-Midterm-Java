@@ -45,7 +45,7 @@ public class Library {
                 return book;
             }
         }
-        return null; // Book not found
+        return null;
     }
 
     // Method to borrow a book
@@ -53,7 +53,7 @@ public class Library {
         if (book.getStatus() == Status.AVAILABLE) {
             book.setStatus(Status.CHECKED_OUT);
             patron.addBorrowedBook(book);
-            book.decrementCopies(); // Decrement the number of copies available
+            book.decrementCopies();
             System.out.println("Book '" + book.getTitle() + "' has been borrowed successfully.");
         } else {
             System.out.println("This book is not available for borrowing.");
@@ -72,9 +72,9 @@ public class Library {
             patron.removeBorrowedBook(book);
 
             // Calculate fines for overdue books
-            LocalDate dueDate = LocalDate.now().minusDays(7); // Assuming books are due in 7 days
+            LocalDate dueDate = LocalDate.now().minusDays(7);
             long daysOverdue = ChronoUnit.DAYS.between(dueDate, returnDate);
-            double fineRatePerDay = 0.50; // Define your fine rate per day
+            double fineRatePerDay = 0.50;
 
             if (daysOverdue > 0) {
                 double fines = daysOverdue * fineRatePerDay;
@@ -125,6 +125,6 @@ public class Library {
                 return patron;
             }
         }
-        return null; // Patron not found
+        return null;
     }
 }

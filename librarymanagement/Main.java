@@ -48,12 +48,11 @@ public class Main {
         // Test removing a patron
         System.out.println("\nRemoving a patron:");
         library.removePatron(newPatron);
-        displayPatronInfo(newPatron); // Should show as null
+        displayPatronInfo(newPatron);
 
         // Test adding a new book
         System.out.println("\nAdding a new book:");
-        Author newAuthor = new Author("Emily Brown", "15/02/1990"); // Provide a specific date for the author's
-        // birthdate
+        Author newAuthor = new Author("Emily Brown", "15/02/1990");
         Book newBook = new Book("New Book", newAuthor, "978-3-16-148420-0", "New Publisher", 2);
         library.addBook(newBook);
         displayBook(newBook);
@@ -68,7 +67,6 @@ public class Main {
     private static void loadData(Library library) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        // Creating author instances with their birthdates
         Author author1 = null;
         Author author2 = null;
         Author author3 = null;
@@ -80,7 +78,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        // Adding books
         Book book1 = new Book("Java Basics", author1, "978-3-16-148410-0", "Publisher A", 5);
         Book book2 = new Book("Advanced Java", author1, "978-3-16-148411-0", "Publisher B", 3);
         Book book3 = new Book("Python Essentials", author2, "978-3-16-148412-0", "Publisher C", 7);
@@ -91,14 +88,12 @@ public class Main {
         Book book8 = new Book("C++ for Dummies", author3, "978-0764557696", "For Dummies", 5);
         Book book9 = new Book("C++ in One Hour a Day", author3, "978-0789757745", "Sams Publishing", 4);
 
-        // Adding patrons
         Patron patron1 = new Patron("Carol", "789 Elm St", "555-6789");
         Patron patron2 = new Patron("Daniel", "101 Pine St", "555-7890");
         Patron patron3 = new Patron("Emma", "456 Oak St", "555-1234");
         Patron patron4 = new Patron("Frank", "321 Maple St", "555-5678");
         Patron patron5 = new Patron("Grace", "654 Birch St", "555-2345");
 
-        // Adding books, authors, and patrons to the library
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);

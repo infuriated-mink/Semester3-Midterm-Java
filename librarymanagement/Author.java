@@ -20,7 +20,7 @@ public class Author {
         this.books = new ArrayList<>();
     }
 
-    // Constructor for the case where dateOfBirth is a string in format "dd/MM/yyyy"
+    // Constructors
     public Author(String authorName, String dateString) {
         this.authorID = nextID++;
         this.authorName = authorName;
@@ -28,7 +28,6 @@ public class Author {
         this.books = new ArrayList<>();
     }
 
-    // Constructor for the case where dateOfBirth is a LocalDate
     public Author(String authorName, LocalDate dateOfBirth) {
         this.authorID = nextID++;
         this.authorName = authorName;
@@ -37,7 +36,6 @@ public class Author {
     }
 
     private Date parseDateString(String dateString) {
-        // Assuming the date string is in format "dd/MM/yyyy"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.parse(dateString, formatter);
         return convertToDate(localDate);
