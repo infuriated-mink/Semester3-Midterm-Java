@@ -3,15 +3,16 @@
 ## Table of Contents
 1. [Description](#description)
 2. [Key Features](#key-features)
-3. [Documentation](#documentation)
+3. [Key Components](#key-components)
+4. [Documentation](#documentation)
     - [User Manual](#user-manual)
     - [Development Documentation](#development-documentation)
     - [Deployment Documentation](#deployment-documentation)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Credits](#credits)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Credits](#credits)
 
 ## Description
 
