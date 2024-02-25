@@ -1,66 +1,101 @@
 # Library Management System
+---
+## Table of Contents
+1. [Description](#description)
+2. [Key Features](#key-features)
+3. [Documentation](#documentation)
+    - [User Manual](#user-manual)
+    - [Development Documentation](#development-documentation)
+    - [Deployment Documentation](#deployment-documentation)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Credits](#credits)
 
-## User Documentation
+## Description
 
-### Introduction
+The Library Management System is a Java-based application designed to help libraries manage their book inventory, patron information, and book borrowing and returning operations efficiently. This system provides a user-friendly interface for librarians to perform various tasks such as adding and removing books, managing patron records, and handling book borrowing and returning processes.
 
-The Library Management System is a Java application designed to streamline the management of books, authors, and patrons in a library environment. It provides features such as adding, editing, and deleting books and authors, managing patrons, and facilitating book borrowing and returning.
+## Key Features
 
-### Class Descriptions
+- **Book Management**: Allows librarians to add new books to the inventory, remove existing books, and update book information.
+- **Patron Management**: Enables librarians to manage patron records, including adding new patrons, updating patron information, and removing patrons from the system.
+- **Book Borrowing and Returning**: Facilitates the borrowing and returning process for library patrons, including checking book availability, borrowing books, and returning books.
+- **Fine Calculation**: Automatically calculates fines for overdue books and updates patron records accordingly.
+- **Search Functionality**: Provides search functionality to quickly find books by title, author, or ISBN.
+- **Author Information**: Stores author information, including name and birthdate, to associate authors with their respective books.
 
-1. **Book**: Represents a book in the library. It includes properties such as title, author, ISBN, publisher, and number of copies. Implements the `Borrowable` interface.
+## Key Components
 
-2. **Author**: Represents an author. Contains properties such as name, date of birth, and a list of books they have written.
-
-3. **Patron**: Represents a library patron. Includes properties like name, address, phone number, and a list of borrowed books.
-
-4. **Library**: Manages books, authors, and patrons. Provides methods to search for books by title, author, or ISBN, and to borrow and return books.
-
-### Functionality
-
-- **Book Management**: Add, edit, and delete books from the library inventory.
-- **Author Management**: Add, edit, and delete authors from the library database.
-- **Patron Management**: Add, edit, and delete patrons from the library records.
-- **Book Borrowing**: Patrons can search for books by title, author, or ISBN and borrow specific copies.
-- **Book Returning**: Patrons can return books they have borrowed.
-
-### Accessing the Application
-
-1. Ensure you have Java installed on your system.
-2. Download the provided `.rar` file and extract it.
-3. Compile the Java files using `javac *.java`.
-4. Run the main class to start the application.
-
-### Class Diagram
-
-[Library] --- has --- [Book]
-| |
-| --- has --- [Author]
-|
---- has --- [Patron]
-
-## Development
-
-- **Javadocs**: Detailed documentation for each class and method is available in the source code.
-- **Source Code Structure**: The source code is organized into packages under the `com.yourname` directory.
-- **Build Process**: Compile the Java files using `javac *.java`.
-- **Dependencies**: No external dependencies are required.
-- **Development Standards**: Follow standard Java coding conventions.
-
-## Deployment
-
-- **Installation**: No installation steps are required. Simply compile the Java files and run the main class.
-- **Running the Application**: Follow the instructions provided in the "How to Use" section.
-- **Configuration**: No additional configuration is needed for deployment.
-
-## Video Demonstration
-
-A video demonstration showcasing the functionality of the Library Management System is available [here](video_demo.mp4).
+- **Library Class**: Manages book inventory, patron information, and book borrowing and returning operations.
+- **Book Class**: Represents a book entity with attributes such as title, author, ISBN, publisher, and status.
+- **Patron Class**: Represents a library patron with attributes such as name, address, phone number, and borrowed books.
+- **Author Class**: Represents an author entity with attributes such as name and birthdate.
+- **Status Enum**: Defines the status of a book (e.g., available, checked out, overdue).
+- **Borrowable Interface**: Defines methods for borrowing and returning books.
 
 ## Documentation
 
-For detailed documentation, including user, development, and deployment guides, refer to the documents provided in the `docs` directory.
+The project documentation is located in the `docs` folder, which contains detailed guides and manuals for users, developers, and deployment.
+
+### User Documentation
+
+The user documentation provides instructions for end-users on how to navigate and utilize the Library Management System effectively.
+
+### Development Documentation
+
+The development documentation offers detailed insights into the system's architecture, design, and implementation for developers contributing to the project.
+
+### Deployment Documentation
+
+The deployment documentation outlines the steps required to deploy the Library Management System in various environments and configurations.
+
+
+## Installation
+
+1. Clone the repository to your local machine:
+```
+git clone <repository_url>
+```
+
+2. Navigate to the project directory:
+```
+cd library-management-system
+```
+
+3. Compile the Java source code:
+```
+javac *.java
+```
+
+4. Run the main program:
+```
+java Main
+```
+
+
+## Usage
+
+1. Upon launching the application, you will be presented with a menu interface.
+2. Use the menu options to perform various tasks such as adding books, managing patrons, and handling book borrowing and returning operations.
+3. Follow the on-screen prompts to complete each task.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/<feature_name>`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/<feature_name>`).
+6. Create a new pull request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+This project was created by [Vanessa Rice](https://www.github.com/infuriated-mink).
