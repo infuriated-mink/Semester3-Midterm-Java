@@ -77,9 +77,39 @@ java Main
 
 ## Usage
 
-1. Upon launching the application, you will be presented with a menu interface.
-2. Use the menu options to perform various tasks such as adding books, managing patrons, and handling book borrowing and returning operations.
-3. Follow the on-screen prompts to complete each task.
+Upon launching the application, you will interact with the Library Management System through method calls in the Java code. The system provides a set of functionalities accessible through method invocations, allowing you to manage books, patrons, and borrowing/returning operations programmatically.
+
+To utilize the system, follow these steps:
+
+1. Open the Java source code files in your preferred development environment.
+2. Locate the methods corresponding to the desired tasks, such as adding books, managing patrons, and handling book borrowing and returning operations.
+3. Call these methods with the appropriate parameters to perform the desired actions.
+4. Follow the method documentation and code comments for guidance on how to use each method effectively.
+
+Here's an example of how you can use the Library Management System programmatically in your Java code:
+
+```java
+public static void main(String[] args) {
+    // Create library instance
+    Library library = new Library();
+
+    // Add a new book to the library
+    Author author = new Author("John Doe", "01/01/1970");
+    Book book = new Book("Java Basics", author, "978-3-16-148410-0", "Publisher A", 5);
+    library.addBook(book);
+
+    // Search for books by title
+    List<Book> booksByTitle = library.searchBooksByTitle("Java Basics");
+    displayBooks(booksByTitle);
+
+    // Borrow a book
+    Patron patron = new Patron("Carol", "789 Elm St", "555-6789");
+    library.borrowBook(book, patron);
+
+    // Return a book
+    library.returnBook(book, patron);
+}
+```
 
 ## Contributing
 
